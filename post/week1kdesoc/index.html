@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Week1 KDE Gsoc - Ebuka&#39;s Blog</title>
+<meta name="description" content="">
+
+<link rel="icon" type="image/x-icon" href="https://daviper.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://daviper.github.io/favicon.png">
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="https://daviper.github.io/css/style.03fcbf2f5adfa317daeecc510bd9aa2cd268b14a385fc2498842fa5602e937f2.css" integrity="sha256-A/y/L1rfoxfa7sxRC9mqLNJosUo4X8JJiEL6VgLpN/I=">
+    
+
+
+
+
+
+<meta property="og:title" content="Week1 KDE Gsoc" />
+<meta property="og:description" content="The first week was small steps were made,
+some printers for QT and KDE framework was already made,i imported those printers from here, also some from a qt merge request patch here,
+removing any deprecated logic as the printers are quite old, some changes where made to the QListPrinter to fix the indexing and to account for typedefs like QStringList, QVariantList.
+I had a problem of QListprinters not printing nested list," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daviper.github.io/post/week1kdesoc/" />
+<meta property="article:published_time" content="2021-06-10T13:58:21+01:00" />
+<meta property="article:modified_time" content="2021-06-10T13:58:21+01:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week1 KDE Gsoc"/>
+<meta name="twitter:description" content="The first week was small steps were made,
+some printers for QT and KDE framework was already made,i imported those printers from here, also some from a qt merge request patch here,
+removing any deprecated logic as the printers are quite old, some changes where made to the QListPrinter to fix the indexing and to account for typedefs like QStringList, QVariantList.
+I had a problem of QListprinters not printing nested list,"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header"> 
+            
+                <div class="header-top">
+    <h1 class="site-title">
+        <a href="/">Ebuka&#39;s Blog</a>
+    </h1>
+    <ul class="social-icons">
+
+
+</ul>
+
+</div>
+
+    <nav></nav>
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1"> 
+            
+    
+    
+    <article class="post h-entry">
+        <header class="post-header">
+            <h1 class="p-name post-title">Week1 KDE Gsoc</h1>
+        </header>
+        <div class="content e-content">
+            <p>The first week was small steps were made,</p>
+<p>some printers for QT and KDE framework was already made,i imported those printers <a href="https://invent.kde.org/kdevelop/kdevelop/-/tree/master/plugins/gdb/printers">from here</a>, also some from a qt merge request patch <a href="https://codereview.qt-project.org/c/qt/qtbase/+/87052/">here</a>,</p>
+<p>removing any deprecated logic as the printers are quite old, some changes where made to the QListPrinter to fix the indexing and to account for typedefs like QStringList, QVariantList.</p>
+<p>I had a problem of QListprinters not printing nested list,</p>
+<p>for example you have a declared a variable</p>
+<p><code>QList&lt;QList&lt;QString&gt;&gt; nestedList = { {&quot;one&quot;, &quot;two&quot;,&quot;three&quot;,&quot;four&quot;}, {&quot;aword&quot;, &quot;anotherone&quot;, &quot;yetanother&quot;, &quot;anoyetanother&quot;}};</code></p>
+<p>the QListPrinter does not recognized this yet</p>
+<ul>
+<li>A new printer for QAtomic int is added</li>
+</ul>
+<p>Update by next week</p>
+
+        </div>
+        
+
+
+<div class="post-info">
+    
+        <div class="post-date dt-published">2021-06-10</div>
+    
+    
+    <a class="post-hidden-url u-url" href="https://daviper.github.io/post/week1kdesoc/">https://daviper.github.io/post/week1kdesoc/</a>
+    <a href=https://daviper.github.io/ class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+            
+    </div>
+</div>
+
+    </article>
+
+    
+
+    
+
+    
+
+
+        </main>
+        
+            <footer class="common-footer">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+        <div class="copyright">
+            <p>© 2021<br>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/mitrichius/hugo-theme-anubis">Anubis</a>.<br>
+            
+            </p>  
+        </div> 
+
+        
+
+
+   
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://daviper.github.io/ class="p-name u-url url fn" rel="me"></a> 
+
+    
+
+    
+</p> 
+</footer>
+
+        
+    </div>
+</body>
+</html>

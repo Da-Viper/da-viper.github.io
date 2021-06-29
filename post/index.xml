@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ebuka&#39;s Blog</title>
-    <link>https://daviper.github.io/</link>
-    <description>Ebuka&#39;s Blog</description>
+    <title>Posts on Ebuka&#39;s Blog</title>
+    <link>https://daviper.github.io/post/</link>
+    <description>Ebuka&#39;s Blog (Posts)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 20 Jun 2021 14:06:12 +0100</lastBuildDate>
     
-    <atom:link href="https://daviper.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://daviper.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
