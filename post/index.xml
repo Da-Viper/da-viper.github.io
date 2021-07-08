@@ -6,10 +6,68 @@
     <description>Ebuka&#39;s Blog (Posts)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Jun 2021 14:06:12 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 02 Jul 2021 15:47:43 +0100</lastBuildDate>
     
     <atom:link href="https://daviper.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 3 KDE Gsoc</title>
+      <link>https://daviper.github.io/post/week3kdesoc/</link>
+      <pubDate>Fri, 02 Jul 2021 15:47:43 +0100</pubDate>
+      
+      <guid>https://daviper.github.io/post/week3kdesoc/</guid>
+      <description>&lt;h2 id=&#34;qpointers&#34;&gt;QPointers&lt;/h2&gt;
+&lt;p&gt;lets start with &lt;code&gt;QWeakPointer&lt;/code&gt;,
+here our pointer template type is &lt;code&gt;Animal&lt;/code&gt;
+its structure is&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;├── wp &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;weakpointer&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QWeakPointer&amp;lt;Animal&amp;gt; *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+├── d 
+│   ├── weakref  : as QAtomicInt  
+│   └── strongref: as QAtomicInt
+└── value: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Animal *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;QWeakpointers&lt;/code&gt; in GDB provide two variables.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;d (data) -&amp;gt; stores the weak and strong references of the pointer.&lt;/li&gt;
+&lt;li&gt;value -&amp;gt; stores the type the pointer points to.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;what we need to print is&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;weak reference&lt;/li&gt;
+&lt;li&gt;strong reference&lt;/li&gt;
+&lt;li&gt;the value&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;no need to worry about the weak and strong ref as &lt;code&gt;QAtomicInt Printer&lt;/code&gt; has already been made,
+the values is then printed out&lt;/p&gt;
+&lt;p&gt;in the above &lt;code&gt;Animal&lt;/code&gt; is the type template
+we need to print the value then we are done.&lt;/p&gt;
+&lt;p&gt;The above applies for both QWeak and QShared Pointer but not QAtomicPointer and QPointer&lt;/p&gt;
+&lt;p&gt;QPointer structure would be&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;QPointer &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QPointer&amp;lt;Animal&amp;gt; *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+├── wp &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;weakpointer&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QWeakPointer&amp;lt;QObject&amp;gt; *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+│   ├── d
+│   │ 	├──  weakref  : as QAtomicInt 
+│   │ 	├── trongref: as QAtomicInt 
+│   ├── value: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QObject *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In this case we would get the template name from the parent and pass it to the weak pointer printer,
+then cast the value from a &lt;code&gt;QObject&lt;/code&gt; to the template type, in our case it is &lt;code&gt;Animal&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;for QAtomicPointer where are able to get the pointer at &lt;code&gt;pointerName._q_value._M_i&#39;&lt;/code&gt; and dereference it.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/760f212e084a400e2836de31a3abd953c20106f5&#34;&gt;relevant  commit&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;fix-for-qfileinfo&#34;&gt;Fix For QFileInfo&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;printer for QfileInfo always crashes because i try to access methods that do not exist yet in the class
+to solve the problem i found a way to check if the class has been initialized in gdb
+&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/5f831a203cecd973e4d4fb5d3abe7f0c8bb133d5&#34;&gt;commit here&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/49efe50a48e5be3ca0f7eaa8b8d8b2ec280978b2&#34;&gt;added&lt;/a&gt; some extra variable that may be needed during debugging&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;the repo can be found &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s it for now see you next week&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Week 2 KDE GSoc</title>
@@ -19,8 +77,10 @@
       <guid>https://daviper.github.io/post/week2kdesoc/</guid>
       <description>&lt;p&gt;I think i went down a rabbit hole&lt;/p&gt;
 &lt;p&gt;I decided the next printer to make is QDir,&lt;/p&gt;
-&lt;p&gt;I had to understand how things works,  making printers  feels like construction, its like you are given a set of tools, to produce an output.
-The normal i take step to make a printer is to either dereference  d_ptr value or the d value ( they are usuallly included in QT types) , to use &lt;code&gt;ptype nameOfTheValue&lt;/code&gt;  but in both cases the output was an incomplete type.&lt;/p&gt;
+&lt;p&gt;I had to understand how things works,
+making printers feels like construction,
+its like you are given a set of tools, to produce an output.&lt;/p&gt;
+&lt;p&gt;The normal steps i take make a printer is to either dereference  d_ptr value or the d value ( they are usuallly included in QT types) , to use &lt;code&gt;ptype nameOfTheValue&lt;/code&gt;  but in both cases the output was an incomplete type.&lt;/p&gt;
 &lt;p&gt;After a little search, thanks to this &lt;a href=&#34;https://stackoverflow.com/a/56313562&#34;&gt;answer&lt;/a&gt; from stackoverflow i was able to get the debugging symbols needed to view the internals of the QDir class.&lt;/p&gt;
 &lt;p&gt;next problem was getting the list of files in the directory show consistently, the files list only show up in gdb when either the method &lt;code&gt;QDir-&amp;gt;entryList()&lt;/code&gt; or &lt;code&gt;QDir-&amp;gt;count()&lt;/code&gt; has been called previously, i then decided to call the entryList method when the printer is initialized that way the file list is always shown when QDir is called in GDB.&lt;/p&gt;
 &lt;p&gt;But the entire application would crash if the QDir has not yet been initialized in memory, because the method i am trying to call does not exist. since none of Qt classes have any fields named something like initialiized, could not find anything for sometime. I was able to figure out that most &lt;em&gt;advanced&lt;/em&gt; Qt classes usually have a field named QSharedData.&lt;/p&gt;

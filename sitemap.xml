@@ -1,33 +1,44 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>https://daviper.github.io/categories/</loc>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
     <loc>https://daviper.github.io/</loc>
-    <lastmod>2021-06-20T14:06:12+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
+    <loc>https://daviper.github.io/tags/gdb/</loc>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
+    <loc>https://daviper.github.io/tags/gdb-printers/</loc>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
+    <loc>https://daviper.github.io/tags/gsoc/</loc>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
+    <loc>https://daviper.github.io/tags/kde/</loc>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
+    <loc>https://daviper.github.io/categories/kde/</loc>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
     <loc>https://daviper.github.io/post/</loc>
-    <lastmod>2021-06-20T14:06:12+01:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
+    <loc>https://daviper.github.io/tags/printers/</loc>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
+    <loc>https://daviper.github.io/tags/</loc>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
+    <loc>https://daviper.github.io/post/week3kdesoc/</loc>
+    <lastmod>2021-07-02T15:47:43+01:00</lastmod>
+  </url><url>
     <loc>https://daviper.github.io/post/week2kdesoc/</loc>
     <lastmod>2021-06-20T14:06:12+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daviper.github.io/post/week1kdesoc/</loc>
     <lastmod>2021-06-10T13:58:21+01:00</lastmod>
   </url>
-  
-  <url>
-    <loc>https://daviper.github.io/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://daviper.github.io/tags/</loc>
-  </url>
-  
 </urlset>
