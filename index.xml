@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ebuka&#39;s Blog</title>
-    <link>https://daviper.github.io/</link>
+    <link>https://da-viper.github.io/</link>
     <description>Ebuka&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 02 Jul 2021 15:47:43 +0100</lastBuildDate>
     
-    <atom:link href="https://daviper.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://da-viper.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Week 3 KDE Gsoc</title>
-      <link>https://daviper.github.io/post/week3kdesoc/</link>
+      <link>https://da-viper.github.io/post/week3kdesoc/</link>
       <pubDate>Fri, 02 Jul 2021 15:47:43 +0100</pubDate>
       
-      <guid>https://daviper.github.io/post/week3kdesoc/</guid>
+      <guid>https://da-viper.github.io/post/week3kdesoc/</guid>
       <description>&lt;h2 id=&#34;qpointers&#34;&gt;QPointers&lt;/h2&gt;
 &lt;p&gt;lets start with &lt;code&gt;QWeakPointer&lt;/code&gt;,
 here our pointer template type is &lt;code&gt;Animal&lt;/code&gt;
@@ -71,10 +71,10 @@ to solve the problem i found a way to check if the class has been initialized in
     
     <item>
       <title>Week 2 KDE GSoc</title>
-      <link>https://daviper.github.io/post/week2kdesoc/</link>
+      <link>https://da-viper.github.io/post/week2kdesoc/</link>
       <pubDate>Sun, 20 Jun 2021 14:06:12 +0100</pubDate>
       
-      <guid>https://daviper.github.io/post/week2kdesoc/</guid>
+      <guid>https://da-viper.github.io/post/week2kdesoc/</guid>
       <description>&lt;p&gt;I think i went down a rabbit hole&lt;/p&gt;
 &lt;p&gt;I decided the next printer to make is QDir,&lt;/p&gt;
 &lt;p&gt;I had to understand how things works,
@@ -101,10 +101,10 @@ Goodbye&lt;/p&gt;
     
     <item>
       <title>Week 1 KDE Gsoc</title>
-      <link>https://daviper.github.io/post/week1kdesoc/</link>
+      <link>https://da-viper.github.io/post/week1kdesoc/</link>
       <pubDate>Thu, 10 Jun 2021 13:58:21 +0100</pubDate>
       
-      <guid>https://daviper.github.io/post/week1kdesoc/</guid>
+      <guid>https://da-viper.github.io/post/week1kdesoc/</guid>
       <description>&lt;p&gt;The first week was small steps were made,&lt;/p&gt;
 &lt;p&gt;some printers for QT and KDE framework was already made,i imported those printers &lt;a href=&#34;https://invent.kde.org/kdevelop/kdevelop/-/tree/master/plugins/gdb/printers&#34;&gt;from here&lt;/a&gt;, also some from a qt merge request patch &lt;a href=&#34;https://codereview.qt-project.org/c/qt/qtbase/+/87052/&#34;&gt;here&lt;/a&gt;,&lt;/p&gt;
 &lt;p&gt;removing any deprecated logic as the printers are quite old, some changes where made to the QListPrinter to fix the indexing and to account for typedefs like QStringList, QVariantList.&lt;/p&gt;
