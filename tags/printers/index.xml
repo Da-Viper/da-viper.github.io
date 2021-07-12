@@ -6,10 +6,37 @@
     <description>Ebuka&#39;s Blog (Printers)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 02 Jul 2021 15:47:43 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 08 Jul 2021 04:25:21 +0100</lastBuildDate>
     
     <atom:link href="https://da-viper.github.io/tags/printers/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 4 KDE GSoc</title>
+      <link>https://da-viper.github.io/post/week4kdesoc/week4kdesoc/</link>
+      <pubDate>Thu, 08 Jul 2021 04:25:21 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/post/week4kdesoc/week4kdesoc/</guid>
+      <description>&lt;h2 id=&#34;squashing-bugs&#34;&gt;Squashing Bugs&lt;/h2&gt;
+&lt;h3 id=&#34;qfileinfo&#34;&gt;QFileInfo&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/5f831a203cecd973e4d4fb5d3abe7f0c8bb133d5&#34;&gt;QFileInfo&lt;/a&gt; no longer causes application segmentation fault when the variable does not exist or has not been initialized.&lt;/p&gt;
+&lt;h3 id=&#34;using-python-yield&#34;&gt;Using python yield&lt;/h3&gt;
+&lt;p&gt;GDB tries to print the &lt;a href=&#34;https://sourceware.org/gdb/onlinedocs/gdb/Pretty-Printing-API.html#Pretty-Printing-API&#34;&gt;least amount of values needed&lt;/a&gt;, but if you just return a list is disregards the &lt;a href=&#34;&#34;&gt; set print elements no&lt;/a&gt; command. to prevent this, the &lt;code&gt;python&lt;/code&gt; key word &lt;code&gt;yield&lt;/code&gt; can be used to lazily compute the next needed values.&lt;/p&gt;
+&lt;p&gt;relevant commit -&amp;gt; &lt;a href=&#34;&#34;&gt;here&lt;/a&gt; &lt;a href=&#34;&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;qlist-printer&#34;&gt;QList Printer&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/5509499f0d08d74c86cb4b1955a3d1312e384577&#34;&gt;QListPrinter&lt;/a&gt; in the debug pane now show if it is uninitialized or empty instead of showing an error.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://da-viper.github.io/images/qlist_gdb.png&#34; alt=&#34;q_list_initialized&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;added-printers&#34;&gt;Added Printers&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;QUrl Printer adapted from &lt;a href=&#34;https://invent.kde.org/kdevelop/kdevelop/-/blob/5.5/plugins/gdb/printers/qt.py#L543&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;https://github.com/Lekensteyn/qt5printers/blob/master/core.py#L845&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;QVarArray Printer.&lt;/li&gt;
+&lt;li&gt;QTime Printer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;what-is-next-&#34;&gt;What is next ?&lt;/h3&gt;
+&lt;p&gt;Automatic testing, currently the way I test the printers is to manually compile and compare the debugger&amp;rsquo;s result with the expected one, but this gets cumbersome. When you add more printers you are not sure how it would affect previous printers.&lt;/p&gt;
+&lt;p&gt;More on testing next week as the initial step has begun, bye.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Week 3 KDE Gsoc</title>
