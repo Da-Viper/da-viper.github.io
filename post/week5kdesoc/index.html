@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>Week 5 GDB Printers Testing KDE GSOC - Ebuka&#39;s Blog</title>
+<meta name="description" content="">
+
+<link rel="icon" type="image/x-icon" href="https://da-viper.github.io/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://da-viper.github.io/favicon.png">
+
+
+
+    
+
+
+
+
+
+    
+    
+    
+
+    
+        <link rel="stylesheet" href="https://da-viper.github.io/css/style.e16c796012c8c4857cb59dfe13591fc2fd1d973419a19b1a2af519272aa9bffe.css" integrity="sha256-4Wx5YBLIxIV8tZ3&#43;E1kfwv0dlzQZoZsaKvUZJyqpv/4=">
+    
+
+
+
+
+
+<meta property="og:title" content="Week 5 GDB Printers Testing KDE GSOC" />
+<meta property="og:description" content="Automatic Testing Currently we have a handful of core printers working correctly, the intention is to make sure they stay working after adding new printers.
+This is where testing comes in. before now testing had to be done manually by comparing the result from the gdb console to the expected output. This becomes inconvenient real quick if this is repeated for every class and its output. With manual testing you cannot test if the display_hint strings works correctly and if the index of a list, map or set shown correctly." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://da-viper.github.io/post/week5kdesoc/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-12T19:22:39+01:00" />
+<meta property="article:modified_time" content="2021-07-12T19:22:39+01:00" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week 5 GDB Printers Testing KDE GSOC"/>
+<meta name="twitter:description" content="Automatic Testing Currently we have a handful of core printers working correctly, the intention is to make sure they stay working after adding new printers.
+This is where testing comes in. before now testing had to be done manually by comparing the result from the gdb console to the expected output. This becomes inconvenient real quick if this is repeated for every class and its output. With manual testing you cannot test if the display_hint strings works correctly and if the index of a list, map or set shown correctly."/>
+
+
+
+
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header"> 
+            
+                <div class="header-top">
+    <h1 class="site-title">
+        <a href="https://da-viper.github.io/">Ebuka&#39;s Blog</a>
+    </h1>
+    <ul class="social-icons">
+
+
+</ul>
+
+</div>
+
+    <nav>
+        
+        
+        <a class="" href="https://da-viper.github.io/categories/" title="">categories</a>
+        
+        <a class="" href="https://da-viper.github.io/tags/" title="">Tags</a>
+        
+    </nav>
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1"> 
+            
+    
+    
+    <article class="post h-entry">
+        <header class="post-header">
+            <h1 class="p-name post-title">Week 5 GDB Printers Testing KDE GSOC</h1>
+
+            
+        </header>
+        <div class="content e-content">
+            <h2 id="automatic-testing">Automatic Testing</h2>
+<p>Currently we have a handful of core printers working correctly, the intention is to make sure they stay working after adding new printers.</p>
+<p>This is where testing comes in. before now testing had to be done manually by comparing the result from the gdb console to the expected output. This becomes inconvenient real quick if this is repeated for every class and its output. With manual testing you cannot test if the <a href="https://www.sourceware.org/gdb/current/onlinedocs/gdb/Pretty-Printing-API.html#Pretty-Printing-API">display_hint</a> strings works correctly and if the index of a list, map or set  shown correctly.</p>
+<p>I reached out to my mentors <a href="https://t.me/KMyMoney/">Ralf Habacker</a> and <a href="https://t.me/KMyMoney/">Thomas Baumgart</a>, which we decided to use <code>gdb batch</code> argument pipe it to a file and compare. But the problem of testing when the variable is initialized, empty or assigned is still there although possible would take too much testing to get the tester working, we came up with a solution.</p>
+<h2 id="solution">Solution</h2>
+<p>Inspiration for this was gotten from <a href="https://github.com/ruediger/Boost-Pretty-Printer/tree/master/tests">boost</a> tests.</p>
+<h3 id="the-test-steps-where">The test steps where</h3>
+<ul>
+<li>Write a script to build the test source code</li>
+<li>run gdb from the script</li>
+<li>disable other printers in the system</li>
+<li>enable the printers to test</li>
+<li>attach the test script to gdb</li>
+</ul>
+<p>this way we can add more or group test without worrying about if the break point changes in the source code.</p>
+<h2 id="new-printers">New Printers</h2>
+<ul>
+<li><a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/b1b0709b3fe287e254f140f96d307bbc91bd6444">QEasingCurve</a></li>
+</ul>
+<h2 id="fixes--tests">Fixes &amp; Tests</h2>
+<ul>
+<li>New test cases for <a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/25321efc1d92a612c31e55ffbf8c9d67f577daff">QString</a>, <a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/598c7fea9edf27535ef83ed1950418cad932188d">QChar</a> and <a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/e6bf0c13d62b97dba7617f501550157f6225ce3e">QUrl</a>.</li>
+<li><a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/53678b28a4939bae5967bd6cdcb5be6dde05f0ed">QUrl</a> only computes values when is needed.</li>
+<li>use python <a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/4618d36123a08dcbd6bc84d8151e34b4069fb09a">fstrings</a> for string concatenation as it <a href="https://hg.python.org/cpython/rev/28e280915508">faster</a>.</li>
+</ul>
+<p>That&rsquo;s it for now, see you next week.</p>
+
+        </div>
+        
+
+
+<div class="post-info">
+    
+        <div class="post-date dt-published">2021-07-12</div>
+    
+    
+    <a class="post-hidden-url u-url" href="https://da-viper.github.io/post/week5kdesoc/">https://da-viper.github.io/post/week5kdesoc/</a>
+    <a href=https://da-viper.github.io/ class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    <li><a href="https://da-viper.github.io/categories/">KDE</a></li>
+                
+            </ul>
+            
+            
+                <ul class="post-tags">
+                    
+                        <li><a href="https://da-viper.github.io/tags/kde">#KDE</a></li>
+                    
+                        <li><a href="https://da-viper.github.io/tags/gsoc">#Gsoc</a></li>
+                    
+                        <li><a href="https://da-viper.github.io/tags/gdb">#GDB</a></li>
+                    
+                        <li><a href="https://da-viper.github.io/tags/printers">#Printers</a></li>
+                    
+                        <li><a href="https://da-viper.github.io/tags/gdb-printers">#GDB Printers</a></li>
+                    
+                        <li><a href="https://da-viper.github.io/tags/testing">#testing</a></li>
+                    
+                </ul>
+        
+    </div>
+</div>
+
+    </article>
+
+    
+
+    
+
+    
+
+
+        </main>
+        
+            <footer class="common-footer">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+        <div class="copyright">
+            <p>© 2021<br>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/mitrichius/hugo-theme-anubis">Anubis</a>.<br>
+            
+            </p>  
+        </div> 
+
+        
+
+
+   
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://da-viper.github.io/ class="p-name u-url url fn" rel="me"></a> 
+
+    
+
+    
+</p> 
+</footer>
+
+        
+    </div>
+</body>
+</html>

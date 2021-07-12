@@ -6,10 +6,45 @@
     <description>Ebuka&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Jul 2021 00:59:41 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 12 Jul 2021 19:22:39 +0100</lastBuildDate>
     
     <atom:link href="https://da-viper.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 5 GDB Printers Testing KDE GSOC</title>
+      <link>https://da-viper.github.io/post/week5kdesoc/</link>
+      <pubDate>Mon, 12 Jul 2021 19:22:39 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/post/week5kdesoc/</guid>
+      <description>&lt;h2 id=&#34;automatic-testing&#34;&gt;Automatic Testing&lt;/h2&gt;
+&lt;p&gt;Currently we have a handful of core printers working correctly, the intention is to make sure they stay working after adding new printers.&lt;/p&gt;
+&lt;p&gt;This is where testing comes in. before now testing had to be done manually by comparing the result from the gdb console to the expected output. This becomes inconvenient real quick if this is repeated for every class and its output. With manual testing you cannot test if the &lt;a href=&#34;https://www.sourceware.org/gdb/current/onlinedocs/gdb/Pretty-Printing-API.html#Pretty-Printing-API&#34;&gt;display_hint&lt;/a&gt; strings works correctly and if the index of a list, map or set  shown correctly.&lt;/p&gt;
+&lt;p&gt;I reached out to my mentors &lt;a href=&#34;https://t.me/KMyMoney/&#34;&gt;Ralf Habacker&lt;/a&gt; and &lt;a href=&#34;https://t.me/KMyMoney/&#34;&gt;Thomas Baumgart&lt;/a&gt;, which we decided to use &lt;code&gt;gdb batch&lt;/code&gt; argument pipe it to a file and compare. But the problem of testing when the variable is initialized, empty or assigned is still there although possible would take too much testing to get the tester working, we came up with a solution.&lt;/p&gt;
+&lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Inspiration for this was gotten from &lt;a href=&#34;https://github.com/ruediger/Boost-Pretty-Printer/tree/master/tests&#34;&gt;boost&lt;/a&gt; tests.&lt;/p&gt;
+&lt;h3 id=&#34;the-test-steps-where&#34;&gt;The test steps where&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Write a script to build the test source code&lt;/li&gt;
+&lt;li&gt;run gdb from the script&lt;/li&gt;
+&lt;li&gt;disable other printers in the system&lt;/li&gt;
+&lt;li&gt;enable the printers to test&lt;/li&gt;
+&lt;li&gt;attach the test script to gdb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;this way we can add more or group test without worrying about if the break point changes in the source code.&lt;/p&gt;
+&lt;h2 id=&#34;new-printers&#34;&gt;New Printers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/b1b0709b3fe287e254f140f96d307bbc91bd6444&#34;&gt;QEasingCurve&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;fixes--tests&#34;&gt;Fixes &amp;amp; Tests&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;New test cases for &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/25321efc1d92a612c31e55ffbf8c9d67f577daff&#34;&gt;QString&lt;/a&gt;, &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/598c7fea9edf27535ef83ed1950418cad932188d&#34;&gt;QChar&lt;/a&gt; and &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/e6bf0c13d62b97dba7617f501550157f6225ce3e&#34;&gt;QUrl&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/53678b28a4939bae5967bd6cdcb5be6dde05f0ed&#34;&gt;QUrl&lt;/a&gt; only computes values when is needed.&lt;/li&gt;
+&lt;li&gt;use python &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/4618d36123a08dcbd6bc84d8151e34b4069fb09a&#34;&gt;fstrings&lt;/a&gt; for string concatenation as it &lt;a href=&#34;https://hg.python.org/cpython/rev/28e280915508&#34;&gt;faster&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That&amp;rsquo;s it for now, see you next week.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Week 4 KDE GSoc</title>
