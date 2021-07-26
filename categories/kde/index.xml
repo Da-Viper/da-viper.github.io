@@ -6,10 +6,49 @@
     <description>Ebuka&#39;s Blog (KDE)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Jul 2021 19:22:39 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 26 Jul 2021 14:32:38 +0100</lastBuildDate>
     
     <atom:link href="https://da-viper.github.io/categories/kde/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 6-7 KDE GSoc</title>
+      <link>https://da-viper.github.io/post/week6-7kdesoc/</link>
+      <pubDate>Mon, 26 Jul 2021 14:32:38 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/post/week6-7kdesoc/</guid>
+      <description>&lt;h2 id=&#34;setup-on-windows&#34;&gt;Setup on Windows&lt;/h2&gt;
+&lt;p&gt;setting up mingw on windows is PITA, at first since i am not used to backslash for filepaths, it load the gdb printers, i then realised that it does not come with python enabled. Downloaded a new one it does not come with python3 instead it is python 2.7.&lt;/p&gt;
+&lt;p&gt;I could not find any mingw that is built with python3 on windows, if you do send me a link &lt;a href=&#34;https://matrix.to/#/@da-viper:kde.org&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;new-printers&#34;&gt;New Printers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;QFile&lt;/p&gt;
+&lt;p&gt;this private class has the following structure&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;type &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;QFilePrivate&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; QFileDevicePrivate {
+&lt;span style=&#34;color:#66d9ef&#34;&gt;protected&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+QString fileName;
+
+QFilePrivate(&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;it inherits from a QFiledeviceprivate, but the size of the qfiledeviceprivate is not consistent across operating system,  architectures and qt5 versions.I got the list of offset from the &lt;a href=&#34;https://github.com/qt-creator/qt-creator/blob/4.14/share/qtcreator/debugger/qttypes.py#L657&#34;&gt;qtcreator types&lt;/a&gt; this problem exists for also qprocess (not fully implemented as of now) and for others as i may not be able to get it size for all operating systems, architectures and qt5 versions.&lt;/p&gt;
+&lt;p&gt;relevant &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/350e695f56e5a32a678562d60c4ab22f700e631f&#34;&gt;commit&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;QDBusMessagePrinter&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;QUUidPrinter from &lt;a href=&#34;https://invent.kde.org/kdevelop/kdevelop/-/blob/master/plugins/gdb/printers/qt.py#L669&#34;&gt;here &lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;fixes-and-tests&#34;&gt;Fixes and Tests&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Added &lt;code&gt;QByteArrayPrinterTest&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Fix QFileInfoPrinter causing segfaults when calling a method that does not exist &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/1e9c17e20648ac137fe3dae0330449897872310c&#34;&gt;commit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The tests only runs when CMake builds successfully&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;Here&lt;/a&gt; is a link to the repo&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Week 5 GDB Printers Testing KDE GSOC</title>
