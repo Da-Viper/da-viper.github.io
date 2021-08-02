@@ -6,10 +6,43 @@
     <description>Ebuka&#39;s Blog (GDB)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Jul 2021 14:32:38 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 02 Aug 2021 19:22:21 +0100</lastBuildDate>
     
     <atom:link href="https://da-viper.github.io/tags/gdb/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week8kdesoc</title>
+      <link>https://da-viper.github.io/post/week8kdesoc/</link>
+      <pubDate>Mon, 02 Aug 2021 19:22:21 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/post/week8kdesoc/</guid>
+      <description>&lt;h2 id=&#34;python-2&#34;&gt;Python 2&lt;/h2&gt;
+&lt;p&gt;helpers module for the printers has been ported to support python2 since &lt;a href=&#34;https://da-viper.github.io/post/week6-7kdesoc/&#34;&gt;no mingw supports python 3 yet&lt;/a&gt;, as this just requires removing the variable types in function decarations and returns,
+however in the case of the actual printers i have decided to create two seperate files for it.&lt;/p&gt;
+&lt;p&gt;Although it may be a little time consuming, it makes more sense because there are have become faster in python3 and would be restricting if still using the python2 implemenetation. for example in the case of &lt;code&gt;f&amp;quot;&amp;quot;&lt;/code&gt; and &lt;code&gt; %&lt;/code&gt;. Some classes to do not work when used with pyhton2 and gdb-mi&lt;/p&gt;
+&lt;h2 id=&#34;new-printers&#34;&gt;New Printers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/fbb71a49adc1b7875fd772d0d25cd2473a162fce&#34;&gt;QPixMap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/980897f0845ba7be0569f8d4f3ac5682e504b97b&#34;&gt;QHashIterator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/3d7f179f6624a8ebd7eb8da00cd38b8c454593c9&#34;&gt;QImage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;new-tests&#34;&gt;New Tests&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;QSet&lt;/li&gt;
+&lt;li&gt;QStringRef&lt;/li&gt;
+&lt;li&gt;QLatin1String&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;fixes&#34;&gt;Fixes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;QStringRef printing the wrong reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;QSet QHash printing the wrong values&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;nextweek&#34;&gt;NextWeek&lt;/h3&gt;
+&lt;p&gt;some printers are in the works like Qtimer, QRegexp and QSizePolicy&lt;/p&gt;
+&lt;h4 id=&#34;link-to-repohttpsinventkdeorgebukagdb_printers&#34;&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;Link to Repo&lt;/a&gt;&lt;/h4&gt;
+</description>
+    </item>
     
     <item>
       <title>Week 6-7 KDE GSoc</title>
