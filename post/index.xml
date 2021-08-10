@@ -12,15 +12,72 @@
     
     
     <item>
-      <title>Week8kdesoc</title>
+      <title>GSOC Printers: GDB Machine Interface</title>
+      <link>https://da-viper.github.io/post/week9kdesoc/</link>
+      <pubDate>Tue, 10 Aug 2021 03:03:46 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/post/week9kdesoc/</guid>
+      <description>&lt;p&gt;There has been a lot of work on printers this week but&lt;/p&gt;
+&lt;h1 id=&#34;gdbmi&#34;&gt;GDB/MI&lt;/h1&gt;
+&lt;p&gt;GDB MI allows applications to connect to GDB without actually running it from the terminal, this is how frontends talks to GDB. Most of the time this is how users actually use GDB for debugging.&lt;/p&gt;
+&lt;h3 id=&#34;children-and-to_string&#34;&gt;Children and to_string&lt;/h3&gt;
+&lt;p&gt;GDB has two ways for returning pretty printing values, as children or as to_string. children method returns a tuple of two values, the name and the value ie. &lt;code&gt;(&#39;name&#39;, value)&lt;/code&gt;. to_string returns a string or a gdb.Value, you can read up more on that &lt;a href=&#34;https://sourceware.org/gdb/onlinedocs/gdb/Pretty-Printing-API.html#Pretty-Printing-API&#34;&gt;here&lt;/a&gt;. some printers return to_string, children or both to give relevant debugging information. For example for a &lt;code&gt;double&lt;/code&gt; would return a to_string value and std::vector would return to_string to show how many items are in the vector and children&amp;rsquo;s value to print the items in the vector.&lt;/p&gt;
+&lt;h3 id=&#34;printing-children-and-to_string&#34;&gt;Printing children and to_string&lt;/h3&gt;
+&lt;p&gt;Currently in GDB/MI, if the pretty-printer has a &lt;code&gt;children method&lt;/code&gt;, it ignores the value of the &lt;code&gt;to_string&lt;/code&gt; a only shows the children. for example you have the below code&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;    QStringList alist {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;is&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;stringlist&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;!&amp;#34;&lt;/span&gt;};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;in gdb cli it would be&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    (gdb) print alist 
+    $1 = &amp;lt;5 items&amp;gt; = {&amp;quot;this&amp;quot;, &amp;quot;is&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;stringlist&amp;quot;, &amp;quot;!&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;in GDB MI it would be&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   -var-create - * &amp;quot;alist&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and the IDE would show something like this.
+&lt;img src=&#34;https://da-viper.github.io/images/gdb_mi_variable.png&#34; alt=&#34;gdb_mi_IDE_variable&#34;&gt;&lt;/p&gt;
+&lt;p&gt;this is a current limitation of GDB/MI but the its still usable, however a bug report has been &lt;a href=&#34;https://sourceware.org/bugzilla/show_bug.cgi?id=28201&#34;&gt;filed&lt;/a&gt;. the problem comes when both the to_string and children valuables are needed. The current workaround is to repeat the value in the to_string in the children method. so if you have a &lt;code&gt;QStringRef&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;    QString string{&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this is a string&amp;#34;&lt;/span&gt;};
+	QStringRef &lt;span style=&#34;color:#a6e22e&#34;&gt;aref&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;string, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; , &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;);
+
+
+    &lt;span style=&#34;color:#75715e&#34;&gt;//GDB CLI
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    (gdb) print aref 
+
+    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; string &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this is a string&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0x7ffff4fe9b70&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;in a IDE it would be&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://da-viper.github.io/images/gdbmi_var_qstrref.png&#34; alt=&#34;gdbmi_var_qstrref&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;python-2&#34;&gt;Python 2&lt;/h1&gt;
+&lt;p&gt;All the printers has been ported to &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/9798d29fc6250d72ead2379e2a6bc8ed5740c2b9&#34;&gt;python2&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;new-printers&#34;&gt;New Printers&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/cb4d90c91381c45d9fc88f2b6902639ef5816fe8&#34;&gt;QDate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/96b2468220ef3f58a13ac8146a04ede21418e668&#34;&gt;QSizePolicy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/394a70e12eeb5816538344155782773e633ed375&#34;&gt;QEvent&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/1451c362bd5c3554acdb70dbc7506524a782794c&#34;&gt;QFlags&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/d233bf5d12be89c72411f894ae4c00655b83a917&#34;&gt;QCborValue&lt;/a&gt; (array types no implemented yet).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/f9086d18b452a9e130ed2db3802d48c326a86ea6&#34;&gt;QJsonValue&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;fixes&#34;&gt;Fixes&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/23ec2aba2000c4d3b90fadbb2db1c69079e9df55&#34;&gt;print python string correctly&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GDB cannot show a python string as a string instead it shows it as a char array. the only way to get it to print as a string is to convert it to a char pointer, however this would add the memory address in front of the value.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/719fd2f8cb1c5f38e8536edc700864ec43e839c0&#34;&gt;format qtime in python2&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;link-to-repohttpsinventkdeorgebukagdb_printers&#34;&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;Link to repo&lt;/a&gt;.&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Week 8 KDE GSoc</title>
       <link>https://da-viper.github.io/post/week8kdesoc/</link>
       <pubDate>Mon, 02 Aug 2021 19:22:21 +0100</pubDate>
       
       <guid>https://da-viper.github.io/post/week8kdesoc/</guid>
       <description>&lt;h2 id=&#34;python-2&#34;&gt;Python 2&lt;/h2&gt;
-&lt;p&gt;helpers module for the printers has been ported to support python2 since &lt;a href=&#34;https://da-viper.github.io/post/week6-7kdesoc/&#34;&gt;no mingw supports python 3 yet&lt;/a&gt;, as this just requires removing the variable types in function decarations and returns,
-however in the case of the actual printers i have decided to create two seperate files for it.&lt;/p&gt;
-&lt;p&gt;Although it may be a little time consuming, it makes more sense because there are have become faster in python3 and would be restricting if still using the python2 implemenetation. for example in the case of &lt;code&gt;f&amp;quot;&amp;quot;&lt;/code&gt; and &lt;code&gt; %&lt;/code&gt;. Some classes to do not work when used with pyhton2 and gdb-mi&lt;/p&gt;
+&lt;p&gt;helpers module for the printers has been ported to support python2 since &lt;a href=&#34;https://da-viper.github.io/post/week6-7kdesoc/&#34;&gt;no mingw supports python 3 yet&lt;/a&gt;, as this just requires removing the variable types in function declaration and return,
+however in the case of the actual printers i have decided to create two separate files for python 2 and 3.&lt;/p&gt;
+&lt;p&gt;Although it may be a little time consuming, it makes more sense because there are have become faster in python3 and would be restricting if still using the python2 implementation. for example in the case of &lt;code&gt;f&amp;quot;&amp;quot;&lt;/code&gt; and &lt;code&gt; %&lt;/code&gt;. Some classes to do not work when used with python2 and gdb-mi&lt;/p&gt;
 &lt;h2 id=&#34;new-printers&#34;&gt;New Printers&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/fbb71a49adc1b7875fd772d0d25cd2473a162fce&#34;&gt;QPixMap&lt;/a&gt;&lt;/li&gt;
@@ -39,7 +96,7 @@ however in the case of the actual printers i have decided to create two seperate
 &lt;li&gt;&lt;a href=&#34;&#34;&gt;QSet QHash printing the wrong values&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;nextweek&#34;&gt;NextWeek&lt;/h3&gt;
-&lt;p&gt;some printers are in the works like Qtimer, QRegexp and QSizePolicy&lt;/p&gt;
+&lt;p&gt;some printers are in the works like QTimer, QRegexp and QSizePolicy&lt;/p&gt;
 &lt;h4 id=&#34;link-to-repohttpsinventkdeorgebukagdb_printers&#34;&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;Link to Repo&lt;/a&gt;&lt;/h4&gt;
 </description>
     </item>

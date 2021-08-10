@@ -101,14 +101,69 @@
         
             <article class="post-list h-feed">
     <header class="post-header">
-        <h1 class="p-name post-title"><a class="u-url" href="https://da-viper.github.io/post/week8kdesoc/">Week8kdesoc</a></h1>
+        <h1 class="p-name post-title"><a class="u-url" href="https://da-viper.github.io/post/week9kdesoc/">GSOC Printers: GDB Machine Interface</a></h1>
         
     </header>
 
     
         <div class="content post-summary p-summary">
-            Python 2 helpers module for the printers has been ported to support python2 since no mingw supports python 3 yet, as this just requires removing the variable types in function decarations and returns, however in the case of the actual printers i have decided to create two seperate files for it.
-Although it may be a little time consuming, it makes more sense because there are have become faster in python3 and would be restricting if still using the python2 implemenetation.
+            There has been a lot of work on printers this week but
+GDB/MI GDB MI allows applications to connect to GDB without actually running it from the terminal, this is how frontends talks to GDB. Most of the time this is how users actually use GDB for debugging.
+Children and to_string GDB has two ways for returning pretty printing values, as children or as to_string. children method returns a tuple of two values, the name and the value ie.
+        </div>
+    
+    
+    
+    
+
+
+<div class="post-info">
+    
+        <div class="post-date dt-published">2021-08-10</div>
+    
+    
+    <a class="post-hidden-url u-url" href="https://da-viper.github.io/post/week9kdesoc/">https://da-viper.github.io/post/week9kdesoc/</a>
+    <a href=https://da-viper.github.io/ class="p-name p-author post-hidden-author h-card" rel="me"></a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    <li><a href="https://da-viper.github.io/categories/">KDE</a></li>
+                
+            </ul>
+            
+            
+                <ul class="post-tags">
+                    
+                        <li><a href="https://da-viper.github.io/tags/kde">#KDE</a></li>
+                    
+                        <li><a href="https://da-viper.github.io/tags/gsoc">#Gsoc</a></li>
+                    
+                        <li><a href="https://da-viper.github.io/tags/gdb">#GDB</a></li>
+                    
+                        <li><a href="https://da-viper.github.io/tags/printers">#Printers</a></li>
+                    
+                        <li><a href="https://da-viper.github.io/tags/gdb-printers">#GDB Printers</a></li>
+                    
+                </ul>
+        
+    </div>
+</div>
+
+</article>
+        
+            <article class="post-list h-feed">
+    <header class="post-header">
+        <h1 class="p-name post-title"><a class="u-url" href="https://da-viper.github.io/post/week8kdesoc/">Week 8 KDE GSoc</a></h1>
+        
+    </header>
+
+    
+        <div class="content post-summary p-summary">
+            Python 2 helpers module for the printers has been ported to support python2 since no mingw supports python 3 yet, as this just requires removing the variable types in function declaration and return, however in the case of the actual printers i have decided to create two separate files for python 2 and 3.
+Although it may be a little time consuming, it makes more sense because there are have become faster in python3 and would be restricting if still using the python2 implementation.
         </div>
     
     
