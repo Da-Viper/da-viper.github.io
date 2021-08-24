@@ -6,10 +6,42 @@
     <description>Ebuka&#39;s Blog (KDE)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Aug 2021 03:03:46 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 24 Aug 2021 00:54:58 +0100</lastBuildDate>
     
     <atom:link href="https://da-viper.github.io/categories/kde/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 10 11 kdesoc</title>
+      <link>https://da-viper.github.io/post/week10-11kdesoc/</link>
+      <pubDate>Tue, 24 Aug 2021 00:54:58 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/post/week10-11kdesoc/</guid>
+      <description>&lt;h1 id=&#34;week-10---11&#34;&gt;Week 10 - 11&lt;/h1&gt;
+&lt;p&gt;As the end of google summer of code draws near most of the time is used to write test, fix bugs and possibly add new printers.&lt;/p&gt;
+&lt;p&gt;For classes that works with OS paths, i had to make the path consisistent between operating systems see the commit below.&lt;/p&gt;
+&lt;h1 id=&#34;new-printers&#34;&gt;New Printers&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/6b07b7b9b6f44ef6025e8435a0f899b13da50f43&#34;&gt;QCommandLineOption&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/19fe0d98ac7f1be41a9489756281261442f88e13&#34;&gt;QCborArray&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/cac7bed3920341360c329a0bcdae35dd794f953e&#34;&gt;QJsonArray QJsonObject QCborMap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/75317d38dd2d4c6b32835d8089e891c425ad76ca&#34;&gt;QRegExp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/75317d38dd2d4c6b32835d8089e891c425ad76ca&#34;&gt;QRegularExpression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;new-tests&#34;&gt;New Tests&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/10ec6cd3e32d8a559b8974c859229f1c00f98b9b&#34;&gt;QVariant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/2e6d25c67e7462c639e2e2d1ff400c340741962f&#34;&gt;QVector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/2cd1f36897e4062a5ace3f687375adb049de4523&#34;&gt;QBitArray&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/c151fdee0a2ca6a836e82c56980c5510f300a772&#34;&gt;QMap&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/49c4a23f5498e67c177cb7abcb3c359c2e562234&#34;&gt;QFileInfo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/49c4a23f5498e67c177cb7abcb3c359c2e562234&#34;&gt;QDir&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/737b9c475e4546f4992f8235933605ce09dfa730&#34;&gt;QFile&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Although Google summer of code may have ended i would try to add or fix any issue with the current printers&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;Link to Repo&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>GSOC Printers: GDB Machine Interface</title>
