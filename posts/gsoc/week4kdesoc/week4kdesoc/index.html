@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Week 4 KDE GSoc :: Ebuka&#39;s Blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Squashing Bugs QFileInfo QFileInfo no longer causes application segmentation fault when the variable does not exist or has not been initialized.
+Using python yield GDB tries to print the least amount of values needed, but if you just return a list is disregards the set print elements no command. to prevent this, the python key word yield can be used to lazily compute the next needed values.
+relevant commit -&amp;gt; here here." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://da-viper.github.io/posts/gsoc/week4kdesoc/week4kdesoc/" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://da-viper.github.io/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://da-viper.github.io/favicon.ico">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Week 4 KDE GSoc">
+<meta property="og:description" content="Squashing Bugs QFileInfo QFileInfo no longer causes application segmentation fault when the variable does not exist or has not been initialized.
+Using python yield GDB tries to print the least amount of values needed, but if you just return a list is disregards the set print elements no command. to prevent this, the python key word yield can be used to lazily compute the next needed values.
+relevant commit -&amp;gt; here here." />
+<meta property="og:url" content="https://da-viper.github.io/posts/gsoc/week4kdesoc/week4kdesoc/" />
+<meta property="og:site_name" content="Ebuka&#39;s Blog" />
+
+  
+    <meta property="og:image" content="https://da-viper.github.io/favicon.ico">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+  <meta property="article:section" content="KDE" />
+
+
+  <meta property="article:published_time" content="2021-07-08 04:25:21 &#43;0100 BST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="https://da-viper.github.io/">
+  <div class="logo">
+    Ebuka&#39;s Blog
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="https://da-viper.github.io/about/">Profile</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/posts/gsoc/">Blog</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/categories/">Categories</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/tags/">Tags</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="https://da-viper.github.io/about/">Profile</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/posts/gsoc/">Blog</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/categories/">Categories</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/tags/">Tags</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://da-viper.github.io/posts/gsoc/week4kdesoc/week4kdesoc/">Week 4 KDE GSoc</a>
+  </h1>
+  <div class="post-meta">
+    
+      <time class="post-date">
+        2021-07-08 ::
+        
+      </time>
+    
+    
+    
+  </div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="https://da-viper.github.io/tags/kde/">KDE</a>&nbsp;
+      
+      #<a href="https://da-viper.github.io/tags/gsoc/">Gsoc</a>&nbsp;
+      
+      #<a href="https://da-viper.github.io/tags/gdb/">GDB</a>&nbsp;
+      
+      #<a href="https://da-viper.github.io/tags/printers/">Printers</a>&nbsp;
+      
+      #<a href="https://da-viper.github.io/tags/gdb-printers/">GDB Printers</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h2 id="squashing-bugs">Squashing Bugs<a href="#squashing-bugs" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h3 id="qfileinfo">QFileInfo<a href="#qfileinfo" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/5f831a203cecd973e4d4fb5d3abe7f0c8bb133d5">QFileInfo</a> no longer causes application segmentation fault when the variable does not exist or has not been initialized.</p>
+<h3 id="using-python-yield">Using python yield<a href="#using-python-yield" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>GDB tries to print the <a href="https://sourceware.org/gdb/onlinedocs/gdb/Pretty-Printing-API.html#Pretty-Printing-API">least amount of values needed</a>, but if you just return a list is disregards the <a href=""> set print elements no</a> command. to prevent this, the <code>python</code> key word <code>yield</code> can be used to lazily compute the next needed values.</p>
+<p>relevant commit -&gt; <a href="">here</a> <a href="">here</a>.</p>
+<h3 id="qlist-printer">QList Printer<a href="#qlist-printer" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p><a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/5509499f0d08d74c86cb4b1955a3d1312e384577">QListPrinter</a> in the debug pane now show if it is uninitialized or empty instead of showing an error.</p>
+<p><img src="https://da-viper.github.io/images/qlist_gdb.png" alt="q_list_initialized"></p>
+<h3 id="added-printers">Added Printers<a href="#added-printers" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<ul>
+<li>QUrl Printer adapted from <a href="https://invent.kde.org/kdevelop/kdevelop/-/blob/5.5/plugins/gdb/printers/qt.py#L543">here</a> and <a href="https://github.com/Lekensteyn/qt5printers/blob/master/core.py#L845">here</a>.</li>
+<li>QVarArray Printer.</li>
+<li>QTime Printer.</li>
+</ul>
+<h3 id="what-is-next-">What is next ?<a href="#what-is-next-" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Automatic testing, currently the way I test the printers is to manually compile and compare the debugger&rsquo;s result with the expected one, but this gets cumbersome. When you add more printers you are not sure how it would affect previous printers.</p>
+<p>More on testing next week as the initial step has begun, bye.</p>
+
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2023 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="https://da-viper.github.io/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

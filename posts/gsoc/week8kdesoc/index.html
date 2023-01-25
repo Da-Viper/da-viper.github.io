@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Week 8 KDE GSoc :: Ebuka&#39;s Blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Python 2 helpers module for the printers has been ported to support python2 since no mingw supports python 3 yet, as this just requires removing the variable types in function declaration and return, however in the case of the actual printers i have decided to create two separate files for python 2 and 3.
+Although it may be a little time consuming, it makes more sense because there are have become faster in python3 and would be restricting if still using the python2 implementation." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://da-viper.github.io/posts/gsoc/week8kdesoc/" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://da-viper.github.io/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://da-viper.github.io/favicon.ico">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Week 8 KDE GSoc">
+<meta property="og:description" content="Python 2 helpers module for the printers has been ported to support python2 since no mingw supports python 3 yet, as this just requires removing the variable types in function declaration and return, however in the case of the actual printers i have decided to create two separate files for python 2 and 3.
+Although it may be a little time consuming, it makes more sense because there are have become faster in python3 and would be restricting if still using the python2 implementation." />
+<meta property="og:url" content="https://da-viper.github.io/posts/gsoc/week8kdesoc/" />
+<meta property="og:site_name" content="Ebuka&#39;s Blog" />
+
+  
+    <meta property="og:image" content="https://da-viper.github.io/favicon.ico">
+  
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+  <meta property="article:section" content="KDE" />
+
+
+  <meta property="article:published_time" content="2021-08-02 19:22:21 &#43;0100 BST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="https://da-viper.github.io/">
+  <div class="logo">
+    Ebuka&#39;s Blog
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="https://da-viper.github.io/about/">Profile</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/posts/gsoc/">Blog</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/categories/">Categories</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/tags/">Tags</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="https://da-viper.github.io/about/">Profile</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/posts/gsoc/">Blog</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/categories/">Categories</a></li>
+        
+      
+        
+          <li><a href="https://da-viper.github.io/tags/">Tags</a></li>
+        
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://da-viper.github.io/posts/gsoc/week8kdesoc/">Week 8 KDE GSoc</a>
+  </h1>
+  <div class="post-meta">
+    
+      <time class="post-date">
+        2021-08-02 ::
+        
+      </time>
+    
+    
+    
+  </div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="https://da-viper.github.io/tags/kde/">KDE</a>&nbsp;
+      
+      #<a href="https://da-viper.github.io/tags/gsoc/">Gsoc</a>&nbsp;
+      
+      #<a href="https://da-viper.github.io/tags/gdb/">GDB</a>&nbsp;
+      
+      #<a href="https://da-viper.github.io/tags/printers/">Printers</a>&nbsp;
+      
+      #<a href="https://da-viper.github.io/tags/gdb-printers/">GDB Printers</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h2 id="python-2">Python 2<a href="#python-2" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>helpers module for the printers has been ported to support python2 since <a href="https://da-viper.github.io/post/week6-7kdesoc/">no mingw supports python 3 yet</a>, as this just requires removing the variable types in function declaration and return,
+however in the case of the actual printers i have decided to create two separate files for python 2 and 3.</p>
+<p>Although it may be a little time consuming, it makes more sense because there are have become faster in python3 and would be restricting if still using the python2 implementation. for example in the case of <code>f&quot;&quot;</code> and <code> %</code>. Some classes to do not work when used with python2 and gdb-mi</p>
+<h2 id="new-printers">New Printers<a href="#new-printers" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<ul>
+<li><a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/fbb71a49adc1b7875fd772d0d25cd2473a162fce">QPixMap</a></li>
+<li><a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/980897f0845ba7be0569f8d4f3ac5682e504b97b">QHashIterator</a></li>
+<li><a href="https://invent.kde.org/ebuka/gdb_printers/-/commit/3d7f179f6624a8ebd7eb8da00cd38b8c454593c9">QImage</a></li>
+</ul>
+<h2 id="new-tests">New Tests<a href="#new-tests" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<ul>
+<li>QSet</li>
+<li>QStringRef</li>
+<li>QLatin1String</li>
+</ul>
+<h2 id="fixes">Fixes<a href="#fixes" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<ul>
+<li><a href="">QStringRef printing the wrong reference</a></li>
+<li><a href="">QSet QHash printing the wrong values</a></li>
+</ul>
+<h3 id="nextweek">NextWeek<a href="#nextweek" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>some printers are in the works like QTimer, QRegexp and QSizePolicy</p>
+<h4 id="link-to-repohttpsinventkdeorgebukagdb_printers"><a href="https://invent.kde.org/ebuka/gdb_printers">Link to Repo</a><a href="#link-to-repohttpsinventkdeorgebukagdb_printers" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2023 Powered by <a href="http://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="https://da-viper.github.io/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

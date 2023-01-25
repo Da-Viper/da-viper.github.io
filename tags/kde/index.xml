@@ -3,21 +3,20 @@
   <channel>
     <title>KDE on Ebuka&#39;s Blog</title>
     <link>https://da-viper.github.io/tags/kde/</link>
-    <description>Ebuka&#39;s Blog (KDE)</description>
+    <description>Recent content in KDE on Ebuka&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Aug 2021 00:54:58 +0100</lastBuildDate>
-    
-    <atom:link href="https://da-viper.github.io/tags/kde/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 24 Aug 2021 00:54:58 +0100</lastBuildDate><atom:link href="https://da-viper.github.io/tags/kde/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Week 10 11 kdesoc</title>
-      <link>https://da-viper.github.io/post/week10-11kdesoc/</link>
+      <link>https://da-viper.github.io/posts/gsoc/week10-11kdesoc/</link>
       <pubDate>Tue, 24 Aug 2021 00:54:58 +0100</pubDate>
       
-      <guid>https://da-viper.github.io/post/week10-11kdesoc/</guid>
-      <description>&lt;h1 id=&#34;week-10---11&#34;&gt;Week 10 - 11&lt;/h1&gt;
+      <guid>https://da-viper.github.io/posts/gsoc/week10-11kdesoc/</guid>
+      <description>Week 10 - 11 As the end of google summer of code draws near most of the time is used to write test, fix bugs and possibly add new printers.
+For classes that works with OS paths, i had to make the path consisistent between operating systems see the commit below.
+New Printers  QCommandLineOption QCborArray QJsonArray QJsonObject QCborMap QRegExp QRegularExpression  New Tests  QVariant QVector QBitArray QMap QFileInfo QDir QFile  Although Google summer of code may have ended i would try to add or fix any issue with the current printers</description>
+      <content>&lt;h1 id=&#34;week-10---11&#34;&gt;Week 10 - 11&lt;/h1&gt;
 &lt;p&gt;As the end of google summer of code draws near most of the time is used to write test, fix bugs and possibly add new printers.&lt;/p&gt;
 &lt;p&gt;For classes that works with OS paths, i had to make the path consisistent between operating systems see the commit below.&lt;/p&gt;
 &lt;h1 id=&#34;new-printers&#34;&gt;New Printers&lt;/h1&gt;
@@ -40,40 +39,43 @@
 &lt;/ul&gt;
 &lt;p&gt;Although Google summer of code may have ended i would try to add or fix any issue with the current printers&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;Link to Repo&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-</description>
+</content>
     </item>
     
     <item>
       <title>GSOC Printers: GDB Machine Interface</title>
-      <link>https://da-viper.github.io/post/week9kdesoc/</link>
+      <link>https://da-viper.github.io/posts/gsoc/week9kdesoc/</link>
       <pubDate>Tue, 10 Aug 2021 03:03:46 +0100</pubDate>
       
-      <guid>https://da-viper.github.io/post/week9kdesoc/</guid>
-      <description>&lt;p&gt;There has been a lot of work on printers this week but&lt;/p&gt;
+      <guid>https://da-viper.github.io/posts/gsoc/week9kdesoc/</guid>
+      <description>There has been a lot of work on printers this week but
+GDB/MI GDB MI allows applications to connect to GDB without actually running it from the terminal, this is how frontends talks to GDB. Most of the time this is how users actually use GDB for debugging.
+Children and to_string GDB has two ways for returning pretty printing values, as children or as to_string. children method returns a tuple of two values, the name and the value ie.</description>
+      <content>&lt;p&gt;There has been a lot of work on printers this week but&lt;/p&gt;
 &lt;h1 id=&#34;gdbmi&#34;&gt;GDB/MI&lt;/h1&gt;
 &lt;p&gt;GDB MI allows applications to connect to GDB without actually running it from the terminal, this is how frontends talks to GDB. Most of the time this is how users actually use GDB for debugging.&lt;/p&gt;
 &lt;h3 id=&#34;children-and-to_string&#34;&gt;Children and to_string&lt;/h3&gt;
 &lt;p&gt;GDB has two ways for returning pretty printing values, as children or as to_string. children method returns a tuple of two values, the name and the value ie. &lt;code&gt;(&#39;name&#39;, value)&lt;/code&gt;. to_string returns a string or a gdb.Value, you can read up more on that &lt;a href=&#34;https://sourceware.org/gdb/onlinedocs/gdb/Pretty-Printing-API.html#Pretty-Printing-API&#34;&gt;here&lt;/a&gt;. some printers return to_string, children or both to give relevant debugging information. For example for a &lt;code&gt;double&lt;/code&gt; would return a to_string value and std::vector would return to_string to show how many items are in the vector and children&amp;rsquo;s value to print the items in the vector.&lt;/p&gt;
 &lt;h3 id=&#34;printing-children-and-to_string&#34;&gt;Printing children and to_string&lt;/h3&gt;
 &lt;p&gt;Currently in GDB/MI, if the pretty-printer has a &lt;code&gt;children method&lt;/code&gt;, it ignores the value of the &lt;code&gt;to_string&lt;/code&gt; a only shows the children. for example you have the below code&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;    QStringList alist {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;is&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;stringlist&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;!&amp;#34;&lt;/span&gt;};
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;in gdb cli it would be&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    (gdb) print alist 
-    $1 = &amp;lt;5 items&amp;gt; = {&amp;quot;this&amp;quot;, &amp;quot;is&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;stringlist&amp;quot;, &amp;quot;!&amp;quot;}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    QStringList alist {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;is&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;a&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;stringlist&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;!&amp;#34;&lt;/span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;in gdb cli it would be&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;    (gdb) print alist 
+    $1 = &amp;lt;5 items&amp;gt; = {&amp;#34;this&amp;#34;, &amp;#34;is&amp;#34;, &amp;#34;a&amp;#34;, &amp;#34;stringlist&amp;#34;, &amp;#34;!&amp;#34;}
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;in GDB MI it would be&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   -var-create - * &amp;quot;alist&amp;quot;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;   -var-create - * &amp;#34;alist&amp;#34;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and the IDE would show something like this.
 &lt;img src=&#34;https://da-viper.github.io/images/gdb_mi_variable.png&#34; alt=&#34;gdb_mi_IDE_variable&#34;&gt;&lt;/p&gt;
 &lt;p&gt;this is a current limitation of GDB/MI but the its still usable, however a bug report has been &lt;a href=&#34;https://sourceware.org/bugzilla/show_bug.cgi?id=28201&#34;&gt;filed&lt;/a&gt;. the problem comes when both the to_string and children valuables are needed. The current workaround is to repeat the value in the to_string in the children method. so if you have a &lt;code&gt;QStringRef&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;    QString string{&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this is a string&amp;#34;&lt;/span&gt;};
-	QStringRef &lt;span style=&#34;color:#a6e22e&#34;&gt;aref&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;string, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; , &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;);
-
-
-    &lt;span style=&#34;color:#75715e&#34;&gt;//GDB CLI
-&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    (gdb) print aref 
-
-    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; string &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this is a string&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0x7ffff4fe9b70&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;in a IDE it would be&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    QString string{&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this is a string&amp;#34;&lt;/span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	QStringRef &lt;span style=&#34;color:#a6e22e&#34;&gt;aref&lt;/span&gt;(&lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&lt;/span&gt;string, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; , &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;//GDB CLI
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    (gdb) print aref 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; string &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;this is a string&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0x7ffff4fe9b70&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;string&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;in a IDE it would be&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://da-viper.github.io/images/gdbmi_var_qstrref.png&#34; alt=&#34;gdbmi_var_qstrref&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;python-2&#34;&gt;Python 2&lt;/h1&gt;
 &lt;p&gt;All the printers has been ported to &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/9798d29fc6250d72ead2379e2a6bc8ed5740c2b9&#34;&gt;python2&lt;/a&gt;&lt;/p&gt;
@@ -97,16 +99,18 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;link-to-repohttpsinventkdeorgebukagdb_printers&#34;&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;Link to repo&lt;/a&gt;.&lt;/h2&gt;
-</description>
+</content>
     </item>
     
     <item>
       <title>Week 8 KDE GSoc</title>
-      <link>https://da-viper.github.io/post/week8kdesoc/</link>
+      <link>https://da-viper.github.io/posts/gsoc/week8kdesoc/</link>
       <pubDate>Mon, 02 Aug 2021 19:22:21 +0100</pubDate>
       
-      <guid>https://da-viper.github.io/post/week8kdesoc/</guid>
-      <description>&lt;h2 id=&#34;python-2&#34;&gt;Python 2&lt;/h2&gt;
+      <guid>https://da-viper.github.io/posts/gsoc/week8kdesoc/</guid>
+      <description>Python 2 helpers module for the printers has been ported to support python2 since no mingw supports python 3 yet, as this just requires removing the variable types in function declaration and return, however in the case of the actual printers i have decided to create two separate files for python 2 and 3.
+Although it may be a little time consuming, it makes more sense because there are have become faster in python3 and would be restricting if still using the python2 implementation.</description>
+      <content>&lt;h2 id=&#34;python-2&#34;&gt;Python 2&lt;/h2&gt;
 &lt;p&gt;helpers module for the printers has been ported to support python2 since &lt;a href=&#34;https://da-viper.github.io/post/week6-7kdesoc/&#34;&gt;no mingw supports python 3 yet&lt;/a&gt;, as this just requires removing the variable types in function declaration and return,
 however in the case of the actual printers i have decided to create two separate files for python 2 and 3.&lt;/p&gt;
 &lt;p&gt;Although it may be a little time consuming, it makes more sense because there are have become faster in python3 and would be restricting if still using the python2 implementation. for example in the case of &lt;code&gt;f&amp;quot;&amp;quot;&lt;/code&gt; and &lt;code&gt; %&lt;/code&gt;. Some classes to do not work when used with python2 and gdb-mi&lt;/p&gt;
@@ -130,16 +134,18 @@ however in the case of the actual printers i have decided to create two separate
 &lt;h3 id=&#34;nextweek&#34;&gt;NextWeek&lt;/h3&gt;
 &lt;p&gt;some printers are in the works like QTimer, QRegexp and QSizePolicy&lt;/p&gt;
 &lt;h4 id=&#34;link-to-repohttpsinventkdeorgebukagdb_printers&#34;&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;Link to Repo&lt;/a&gt;&lt;/h4&gt;
-</description>
+</content>
     </item>
     
     <item>
       <title>Week 6-7 KDE GSoc</title>
-      <link>https://da-viper.github.io/post/week6-7kdesoc/</link>
+      <link>https://da-viper.github.io/posts/gsoc/week6-7kdesoc/</link>
       <pubDate>Mon, 26 Jul 2021 14:32:38 +0100</pubDate>
       
-      <guid>https://da-viper.github.io/post/week6-7kdesoc/</guid>
-      <description>&lt;h2 id=&#34;setup-on-windows&#34;&gt;Setup on Windows&lt;/h2&gt;
+      <guid>https://da-viper.github.io/posts/gsoc/week6-7kdesoc/</guid>
+      <description>Setup on Windows setting up mingw on windows is PITA, at first since i am not used to backslash for filepaths, it load the gdb printers, i then realised that it does not come with python enabled. Downloaded a new one it does not come with python3 instead it is python 2.7.
+I could not find any mingw that is built with python3 on windows, if you do send me a link here.</description>
+      <content>&lt;h2 id=&#34;setup-on-windows&#34;&gt;Setup on Windows&lt;/h2&gt;
 &lt;p&gt;setting up mingw on windows is PITA, at first since i am not used to backslash for filepaths, it load the gdb printers, i then realised that it does not come with python enabled. Downloaded a new one it does not come with python3 instead it is python 2.7.&lt;/p&gt;
 &lt;p&gt;I could not find any mingw that is built with python3 on windows, if you do send me a link &lt;a href=&#34;https://matrix.to/#/@da-viper:kde.org&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;new-printers&#34;&gt;New Printers&lt;/h2&gt;
@@ -147,12 +153,12 @@ however in the case of the actual printers i have decided to create two separate
 &lt;li&gt;
 &lt;p&gt;QFile&lt;/p&gt;
 &lt;p&gt;this private class has the following structure&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;type &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;QFilePrivate&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; QFileDevicePrivate {
-&lt;span style=&#34;color:#66d9ef&#34;&gt;protected&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
-QString fileName;
-
-QFilePrivate(&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt;);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;it inherits from a QFiledeviceprivate, but the size of the qfiledeviceprivate is not consistent across operating system,  architectures and qt5 versions.I got the list of offset from the &lt;a href=&#34;https://github.com/qt-creator/qt-creator/blob/4.14/share/qtcreator/debugger/qttypes.py#L657&#34;&gt;qtcreator types&lt;/a&gt; this problem exists for also qprocess (not fully implemented as of now) and for others as i may not be able to get it size for all operating systems, architectures and qt5 versions.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;type &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;QFilePrivate&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; QFileDevicePrivate {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;protected&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;QString fileName;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;QFilePrivate(&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;it inherits from a QFiledeviceprivate, but the size of the qfiledeviceprivate is not consistent across operating system,  architectures and qt5 versions.I got the list of offset from the &lt;a href=&#34;https://github.com/qt-creator/qt-creator/blob/4.14/share/qtcreator/debugger/qttypes.py#L657&#34;&gt;qtcreator types&lt;/a&gt; this problem exists for also qprocess (not fully implemented as of now) and for others as i may not be able to get it size for all operating systems, architectures and qt5 versions.&lt;/p&gt;
 &lt;p&gt;relevant &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/350e695f56e5a32a678562d60c4ab22f700e631f&#34;&gt;commit&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -169,16 +175,18 @@ QFilePrivate(&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt;);
 &lt;li&gt;The tests only runs when CMake builds successfully&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;Here&lt;/a&gt; is a link to the repo&lt;/p&gt;
-</description>
+</content>
     </item>
     
     <item>
       <title>Week 5 GDB Printers Testing KDE GSOC</title>
-      <link>https://da-viper.github.io/post/week5kdesoc/</link>
+      <link>https://da-viper.github.io/posts/gsoc/week5kdesoc/</link>
       <pubDate>Mon, 12 Jul 2021 19:22:39 +0100</pubDate>
       
-      <guid>https://da-viper.github.io/post/week5kdesoc/</guid>
-      <description>&lt;h2 id=&#34;automatic-testing&#34;&gt;Automatic Testing&lt;/h2&gt;
+      <guid>https://da-viper.github.io/posts/gsoc/week5kdesoc/</guid>
+      <description>Automatic Testing Currently we have a handful of core printers working correctly, the intention is to make sure they stay working after adding new printers.
+This is where testing comes in. before now testing had to be done manually by comparing the result from the gdb console to the expected output. This becomes inconvenient real quick if this is repeated for every class and its output. With manual testing you cannot test if the display_hint strings works correctly and if the index of a list, map or set shown correctly.</description>
+      <content>&lt;h2 id=&#34;automatic-testing&#34;&gt;Automatic Testing&lt;/h2&gt;
 &lt;p&gt;Currently we have a handful of core printers working correctly, the intention is to make sure they stay working after adding new printers.&lt;/p&gt;
 &lt;p&gt;This is where testing comes in. before now testing had to be done manually by comparing the result from the gdb console to the expected output. This becomes inconvenient real quick if this is repeated for every class and its output. With manual testing you cannot test if the &lt;a href=&#34;https://www.sourceware.org/gdb/current/onlinedocs/gdb/Pretty-Printing-API.html#Pretty-Printing-API&#34;&gt;display_hint&lt;/a&gt; strings works correctly and if the index of a list, map or set  shown correctly.&lt;/p&gt;
 &lt;p&gt;I reached out to my mentors &lt;a href=&#34;https://t.me/KMyMoney/&#34;&gt;Ralf Habacker&lt;/a&gt; and &lt;a href=&#34;https://t.me/KMyMoney/&#34;&gt;Thomas Baumgart&lt;/a&gt;, which we decided to use &lt;code&gt;gdb batch&lt;/code&gt; argument pipe it to a file and compare. But the problem of testing when the variable is initialized, empty or assigned is still there although possible would take too much testing to get the tester working, we came up with a solution.&lt;/p&gt;
@@ -204,16 +212,19 @@ QFilePrivate(&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt;);
 &lt;li&gt;use python &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/4618d36123a08dcbd6bc84d8151e34b4069fb09a&#34;&gt;fstrings&lt;/a&gt; for string concatenation as it &lt;a href=&#34;https://hg.python.org/cpython/rev/28e280915508&#34;&gt;faster&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;That&amp;rsquo;s it for now, see you next week.&lt;/p&gt;
-</description>
+</content>
     </item>
     
     <item>
       <title>Week 4 KDE GSoc</title>
-      <link>https://da-viper.github.io/post/week4kdesoc/week4kdesoc/</link>
+      <link>https://da-viper.github.io/posts/gsoc/week4kdesoc/week4kdesoc/</link>
       <pubDate>Thu, 08 Jul 2021 04:25:21 +0100</pubDate>
       
-      <guid>https://da-viper.github.io/post/week4kdesoc/week4kdesoc/</guid>
-      <description>&lt;h2 id=&#34;squashing-bugs&#34;&gt;Squashing Bugs&lt;/h2&gt;
+      <guid>https://da-viper.github.io/posts/gsoc/week4kdesoc/week4kdesoc/</guid>
+      <description>Squashing Bugs QFileInfo QFileInfo no longer causes application segmentation fault when the variable does not exist or has not been initialized.
+Using python yield GDB tries to print the least amount of values needed, but if you just return a list is disregards the set print elements no command. to prevent this, the python key word yield can be used to lazily compute the next needed values.
+relevant commit -&amp;gt; here here.</description>
+      <content>&lt;h2 id=&#34;squashing-bugs&#34;&gt;Squashing Bugs&lt;/h2&gt;
 &lt;h3 id=&#34;qfileinfo&#34;&gt;QFileInfo&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/5f831a203cecd973e4d4fb5d3abe7f0c8bb133d5&#34;&gt;QFileInfo&lt;/a&gt; no longer causes application segmentation fault when the variable does not exist or has not been initialized.&lt;/p&gt;
 &lt;h3 id=&#34;using-python-yield&#34;&gt;Using python yield&lt;/h3&gt;
@@ -231,25 +242,28 @@ QFilePrivate(&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt;);
 &lt;h3 id=&#34;what-is-next-&#34;&gt;What is next ?&lt;/h3&gt;
 &lt;p&gt;Automatic testing, currently the way I test the printers is to manually compile and compare the debugger&amp;rsquo;s result with the expected one, but this gets cumbersome. When you add more printers you are not sure how it would affect previous printers.&lt;/p&gt;
 &lt;p&gt;More on testing next week as the initial step has begun, bye.&lt;/p&gt;
-</description>
+</content>
     </item>
     
     <item>
       <title>Week 3 KDE Gsoc</title>
-      <link>https://da-viper.github.io/post/week3kdesoc/</link>
+      <link>https://da-viper.github.io/posts/gsoc/week3kdesoc/</link>
       <pubDate>Fri, 02 Jul 2021 15:47:43 +0100</pubDate>
       
-      <guid>https://da-viper.github.io/post/week3kdesoc/</guid>
-      <description>&lt;h2 id=&#34;qpointers&#34;&gt;QPointers&lt;/h2&gt;
+      <guid>https://da-viper.github.io/posts/gsoc/week3kdesoc/</guid>
+      <description>QPointers lets start with QWeakPointer, here our pointer template type is Animal its structure is
+├── wp (weakpointer): (QWeakPointer&amp;lt;Animal&amp;gt; *) ├── d │ ├── weakref : as QAtomicInt │ └── strongref: as QAtomicInt └── value: (Animal *) QWeakpointers in GDB provide two variables.
+ d (data) -&amp;gt; stores the weak and strong references of the pointer. value -&amp;gt; stores the type the pointer points to.  what we need to print is</description>
+      <content>&lt;h2 id=&#34;qpointers&#34;&gt;QPointers&lt;/h2&gt;
 &lt;p&gt;lets start with &lt;code&gt;QWeakPointer&lt;/code&gt;,
 here our pointer template type is &lt;code&gt;Animal&lt;/code&gt;
 its structure is&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;├── wp &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;weakpointer&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QWeakPointer&amp;lt;Animal&amp;gt; *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-├── d 
-│   ├── weakref  : as QAtomicInt  
-│   └── strongref: as QAtomicInt
-└── value: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Animal *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;QWeakpointers&lt;/code&gt; in GDB provide two variables.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── wp &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;weakpointer&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QWeakPointer&amp;lt;Animal&amp;gt; *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── d 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   ├── weakref  : as QAtomicInt  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   └── strongref: as QAtomicInt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└── value: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Animal *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;QWeakpointers&lt;/code&gt; in GDB provide two variables.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;d (data) -&amp;gt; stores the weak and strong references of the pointer.&lt;/li&gt;
 &lt;li&gt;value -&amp;gt; stores the type the pointer points to.&lt;/li&gt;
@@ -266,13 +280,13 @@ the values is then printed out&lt;/p&gt;
 we need to print the value then we are done.&lt;/p&gt;
 &lt;p&gt;The above applies for both QWeak and QShared Pointer but not QAtomicPointer and QPointer&lt;/p&gt;
 &lt;p&gt;QPointer structure would be&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;QPointer &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QPointer&amp;lt;Animal&amp;gt; *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-├── wp &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;weakpointer&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QWeakPointer&amp;lt;QObject&amp;gt; *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-│   ├── d
-│   │ 	├──  weakref  : as QAtomicInt 
-│   │ 	├── trongref: as QAtomicInt 
-│   ├── value: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QObject *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In this case we would get the template name from the parent and pass it to the weak pointer printer,
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;QPointer &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QPointer&amp;lt;Animal&amp;gt; *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── wp &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;weakpointer&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QWeakPointer&amp;lt;QObject&amp;gt; *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   ├── d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   │ 	├──  weakref  : as QAtomicInt 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   │ 	├── trongref: as QAtomicInt 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│   ├── value: &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;QObject *&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In this case we would get the template name from the parent and pass it to the weak pointer printer,
 then cast the value from a &lt;code&gt;QObject&lt;/code&gt; to the template type, in our case it is &lt;code&gt;Animal&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;for QAtomicPointer where are able to get the pointer at &lt;code&gt;pointerName._q_value._M_i&#39;&lt;/code&gt; and dereference it.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers/-/commit/760f212e084a400e2836de31a3abd953c20106f5&#34;&gt;relevant  commit&lt;/a&gt;&lt;/p&gt;
@@ -289,16 +303,20 @@ to solve the problem i found a way to check if the class has been initialized in
 &lt;/ul&gt;
 &lt;p&gt;the repo can be found &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;That&amp;rsquo;s it for now see you next week&lt;/p&gt;
-</description>
+</content>
     </item>
     
     <item>
       <title>Week 2 KDE GSoc</title>
-      <link>https://da-viper.github.io/post/week2kdesoc/</link>
+      <link>https://da-viper.github.io/posts/gsoc/week2kdesoc/</link>
       <pubDate>Sun, 20 Jun 2021 14:06:12 +0100</pubDate>
       
-      <guid>https://da-viper.github.io/post/week2kdesoc/</guid>
-      <description>&lt;p&gt;I think i went down a rabbit hole&lt;/p&gt;
+      <guid>https://da-viper.github.io/posts/gsoc/week2kdesoc/</guid>
+      <description>I think i went down a rabbit hole
+I decided the next printer to make is QDir,
+I had to understand how things works, making printers feels like construction, its like you are given a set of tools, to produce an output.
+The normal steps i take make a printer is to either dereference d_ptr value or the d value ( they are usuallly included in QT types) , to use ptype nameOfTheValue but in both cases the output was an incomplete type.</description>
+      <content>&lt;p&gt;I think i went down a rabbit hole&lt;/p&gt;
 &lt;p&gt;I decided the next printer to make is QDir,&lt;/p&gt;
 &lt;p&gt;I had to understand how things works,
 making printers feels like construction,
@@ -319,16 +337,20 @@ its like you are given a set of tools, to produce an output.&lt;/p&gt;
 &lt;p&gt;the repo can be found &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Next week would be Pointers Printer
 Goodbye&lt;/p&gt;
-</description>
+</content>
     </item>
     
     <item>
       <title>Week 1 KDE Gsoc</title>
-      <link>https://da-viper.github.io/post/week1kdesoc/</link>
+      <link>https://da-viper.github.io/posts/gsoc/week1kdesoc/</link>
       <pubDate>Thu, 10 Jun 2021 13:58:21 +0100</pubDate>
       
-      <guid>https://da-viper.github.io/post/week1kdesoc/</guid>
-      <description>&lt;p&gt;The first week was small steps were made,&lt;/p&gt;
+      <guid>https://da-viper.github.io/posts/gsoc/week1kdesoc/</guid>
+      <description>The first week was small steps were made,
+some printers for QT and KDE framework was already made,i imported those printers from here, also some from a qt merge request patch here,
+removing any deprecated logic as the printers are quite old, some changes where made to the QListPrinter to fix the indexing and to account for typedefs like QStringList, QVariantList.
+I had a problem of QListprinters not printing nested list,</description>
+      <content>&lt;p&gt;The first week was small steps were made,&lt;/p&gt;
 &lt;p&gt;some printers for QT and KDE framework was already made,i imported those printers &lt;a href=&#34;https://invent.kde.org/kdevelop/kdevelop/-/tree/master/plugins/gdb/printers&#34;&gt;from here&lt;/a&gt;, also some from a qt merge request patch &lt;a href=&#34;https://codereview.qt-project.org/c/qt/qtbase/+/87052/&#34;&gt;here&lt;/a&gt;,&lt;/p&gt;
 &lt;p&gt;removing any deprecated logic as the printers are quite old, some changes where made to the QListPrinter to fix the indexing and to account for typedefs like QStringList, QVariantList.&lt;/p&gt;
 &lt;p&gt;I had a problem of QListprinters not printing nested list,&lt;/p&gt;
@@ -340,7 +362,7 @@ Goodbye&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;the repo can be found &lt;a href=&#34;https://invent.kde.org/ebuka/gdb_printers&#34;&gt;here&lt;/a&gt;
 Update by next week&lt;/p&gt;
-</description>
+</content>
     </item>
     
   </channel>

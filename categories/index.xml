@@ -3,13 +3,19 @@
   <channel>
     <title>Categories on Ebuka&#39;s Blog</title>
     <link>https://da-viper.github.io/categories/</link>
-    <description>Ebuka&#39;s Blog (Categories)</description>
+    <description>Recent content in Categories on Ebuka&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Aug 2021 00:54:58 +0100</lastBuildDate>
-    
-    <atom:link href="https://da-viper.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Tue, 24 Aug 2021 00:54:58 +0100</lastBuildDate><atom:link href="https://da-viper.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KDE</title>
+      <link>https://da-viper.github.io/categories/kde/</link>
+      <pubDate>Tue, 24 Aug 2021 00:54:58 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/categories/kde/</guid>
+      <description></description>
+      <content></content>
+    </item>
     
   </channel>
 </rss>

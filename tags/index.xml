@@ -3,13 +3,69 @@
   <channel>
     <title>Tags on Ebuka&#39;s Blog</title>
     <link>https://da-viper.github.io/tags/</link>
-    <description>Ebuka&#39;s Blog (Tags)</description>
+    <description>Recent content in Tags on Ebuka&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Aug 2021 00:54:58 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 24 Aug 2021 00:54:58 +0100</lastBuildDate><atom:link href="https://da-viper.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GDB</title>
+      <link>https://da-viper.github.io/tags/gdb/</link>
+      <pubDate>Tue, 24 Aug 2021 00:54:58 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/tags/gdb/</guid>
+      <description></description>
+      <content></content>
+    </item>
     
-    <atom:link href="https://da-viper.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GDB Printers</title>
+      <link>https://da-viper.github.io/tags/gdb-printers/</link>
+      <pubDate>Tue, 24 Aug 2021 00:54:58 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/tags/gdb-printers/</guid>
+      <description></description>
+      <content></content>
+    </item>
     
+    <item>
+      <title>Gsoc</title>
+      <link>https://da-viper.github.io/tags/gsoc/</link>
+      <pubDate>Tue, 24 Aug 2021 00:54:58 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/tags/gsoc/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>KDE</title>
+      <link>https://da-viper.github.io/tags/kde/</link>
+      <pubDate>Tue, 24 Aug 2021 00:54:58 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/tags/kde/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Printers</title>
+      <link>https://da-viper.github.io/tags/printers/</link>
+      <pubDate>Tue, 24 Aug 2021 00:54:58 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/tags/printers/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>testing</title>
+      <link>https://da-viper.github.io/tags/testing/</link>
+      <pubDate>Mon, 12 Jul 2021 19:22:39 +0100</pubDate>
+      
+      <guid>https://da-viper.github.io/tags/testing/</guid>
+      <description></description>
+      <content></content>
+    </item>
     
   </channel>
 </rss>
