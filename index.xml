@@ -371,10 +371,22 @@ Update by next week&lt;/p&gt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://da-viper.github.io/about/</guid>
-      <description>Hi 👋, I&#39;m Ezike Ebuka I am passionate about OpenSource and Linux </description>
+      <description>Hi 👋, I&#39;m Ezike Ebuka I am passionate about OpenSource and Linux -- Welcome to my personal blog! I am a passionate Junior Software Engineer with experience in various programming languages, including C++, Python, Lua, and Java. I am a self-motivated individual with a drive for excellence, always looking to learn new skills and take on challenging projects.
+One of my biggest passions is contributing to open source projects, and I believe that community-driven development is essential to advance the tech industry.</description>
       <content>&lt;h1 align=&#34;center&#34;&gt;Hi 👋, I&#39;m Ezike Ebuka&lt;/h1&gt;
-&lt;h3 align=&#34;center&#34;&gt;I am passionate about OpenSource and Linux&lt;/h3&gt;
-</content>
+&lt;!-- &lt;h3 align=&#34;center&#34;&gt;I am passionate about OpenSource and Linux&lt;/h3&gt; --&gt;
+&lt;p&gt;Welcome to my personal blog! I am a passionate Junior Software Engineer with experience in various programming languages, including C++, Python,
+Lua, and Java. I am a self-motivated individual with a drive for excellence, always looking to learn new skills and take on challenging projects.&lt;/p&gt;
+&lt;p&gt;One of my biggest passions is contributing to open source projects, and I believe that community-driven development is essential to advance the
+tech industry. I have contributed to several open source projects and continue to seek out opportunities to make an impact in the open source
+community. In my blog, I share my experience working on open source projects, as well as tutorials and guides on how to get involved in open source.&lt;/p&gt;
+&lt;p&gt;As a Linux enthusiast, I enjoy using Linux as my primary operating system and experimenting with different Linux distributions. I regularly post about Linux tips and tricks, as well as my experiences using Linux for development.&lt;/p&gt;
+&lt;p&gt;Thank you for visiting my blog, and I hope that my content inspires and helps you in your own journey in software development.&lt;/p&gt;
+&lt;!-- 
+    TODO: Add more information in the about section
+    TODO: Add a link to your resume
+    TODO: Add your email address
+ --&gt;</content>
     </item>
     
   </channel>
